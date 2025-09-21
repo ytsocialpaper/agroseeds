@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import StepNavbar from "./components/Stepbar";
 import { details } from "./components/data";
@@ -39,34 +38,6 @@ const Selector = ({ setState, selectedvalue, value, optionKey }: SelectorProps) 
   );
 };
 
-const soydetiailsenglish = () =>
-{
-  return <div className="flex flex-col">
-    <h1><span className="font-bold">Sowing Time:</span> 15 June to 5 July</h1>
-    <h1><span className="font-bold">Seed Rate:</span> 30 Kg per acre</h1>
-    <h1><span className="font-bold">Sowing Method:</span> Maintain a row-to-row distance of 30–45 cm and plant-to-plant
-    distance of 4–5 cm. Sow seeds at a depth of 3–4 cm.</h1>
-    <h1><span className="font-bold">Fertilizer Quantity:</span> At the time of sowing, apply 20 kg Nitrogen, 60 kg Phosphorus, 20
-    kg Potash, and 20 kg Sulphur. Fertilizer should be placed 5–7 cm below the seeds.</h1>
-    <h1><span>Seed Treatment:</span>Treat 1 kg of seed with 2.5 g Thiram.</h1>
-    <h1><span className="font-bold">Weeding:</span> To obtain higher yields, keep the crop free from weeds for up to 45 days. For
-    this, perform one or two hand weedings and run the weeder twice to destroy weeds.</h1>
-    <h1><span className="font-bold">Irrigation: </span>Moisture in the soil is essential during flowering and pod formation stages.
-    If there is no rainfall during these stages, irrigation is necessary.</h1>
-    <div className="flex flex-col">
-    <h1><span className="font-bold">Irrigation: </span>Moisture in the soil is essential during flowering and pod formation stages.
-    If there is no rainfall during these stages, irrigation is necessary.</h1>
-    <ul className="list-disc">
-      <li>0.1% Profenofos 50 EC</li>
- <li>0.05% Monocrotophos 36 EC</li>
-<li>0.04% Quinolphos 25 EC</li>
-    </ul>
-    </div>
-    <h1><span className="font-bold">Harvesting:</span>Harvest when the grains have 14–16% moisture.</h1> 
-    <h1><span className="font-bold">Yield:</span>6–8 quintals per acre</h1>
-    <h1><span className="font-bold">Note:</span>Before sowing, treat the seeds with Thiram (as provided in the packet).</h1>
-  </div>
-}
 
 // ---------------------- SELECT SEASON ----------------------
 interface SelectSeasonProps {

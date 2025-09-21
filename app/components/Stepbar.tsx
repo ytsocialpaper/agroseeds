@@ -1,7 +1,11 @@
 // components/StepNavbar.js
-import React, { useEffect } from "react";
+import React from "react";
 
-const StepNavbar = ({ currentStep }:any) => {
+interface StepNavbarProps {
+  currentStep: number;
+}
+
+const StepNavbar = ({ currentStep }: StepNavbarProps) => {
   const steps = [1, 2, 3];
 
 

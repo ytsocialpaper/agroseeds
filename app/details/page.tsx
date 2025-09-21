@@ -2,7 +2,7 @@
 import { useSearchParams } from "next/navigation";
 import { details } from "../components/data";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import {IoArrowBack} from "react-icons/io5"
 // Import all crop detail components
 import { SoyaEnglish, SoyaHindi, SoyaKannada, SoyaMarathi, SoyaTamil } from "../components/Soyadetails";
@@ -16,9 +16,8 @@ import { SesameEnglish, SesameHindi, SesameKannada, SesameMarathi, SesameTamil }
 import { ToorEnglish, ToorHindi, ToorKannada, ToorMarathi, ToorTamil } from "../components/Toordetails";
 import { UradEnglish, UradHindi, UradKannada, UradMarathi, UradTamil } from "../components/Uraddetails";
 
-const Details = () => {
+const DetailsContent = () => {
   const searchParams = useSearchParams();
-  const crop = searchParams.get("crop");
   const varietyname = searchParams.get("variety");
   const variety = details.find((item) => item.name === varietyname);
   const router = useRouter();
@@ -149,11 +148,19 @@ const Details = () => {
       
       <div className="flex flex-col gap-2  bg-[#FFF6D3] p-4 items-start">
         <div className="flex justify-center items-center min-w-full">
-          <img src={variety?.image} className="w-[294px] h-[294px]"/>
+          <img src={variety?.image} className="w-[294px] h-[294px]" alt={varietyname || "Crop variety image"}/>
         </div>
         <LanguageComponent />
       </div>
     </div>
+  );
+};
+
+const Details = () => {
+  return (
+    <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
+      <DetailsContent />
+    </Suspense>
   );
 };
 
