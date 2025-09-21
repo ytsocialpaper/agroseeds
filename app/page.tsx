@@ -176,18 +176,37 @@ export default function Home() {
   const [step, setStep] = useState(0);
   const router = useRouter(); // ✅ create router
 
-  const crops: Option[] = [
-    { key: "soyabean", name: "🫘 Soybean / सोयाबीन" },
-    { key: "methi", name: "🌿 Methi / मेथी" },
-    { key: "wheat", name: "🌾 Wheat / गेहूं" },
-    { key: "chana", name: "🫘 Chana / चना" },
-    { key: "maize", name: "🌽 Maize / मक्का" },
-    { key: "moong", name: "🟢 Moong / मूंग" },
-    { key: "paddy", name: "🌾 Paddy / धान" },
-    { key: "sesame", name: "🫒 Sesame / तिल" },
-    { key: "toor", name: "🫘 Toor / तूर" },
-    { key: "urad", name: "⚫ Urad / उड़द" }
-  ];
+  // Function to get crops available for the selected season
+  const getCropsForSeason = (selectedSeason: string): Option[] => {
+    if (!selectedSeason) return [];
+    
+    // Get unique crops from details that match the selected season
+    const availableCrops = details
+      .filter(item => item.season.toLowerCase() === selectedSeason.toLowerCase())
+      .map(item => item.crop)
+      .filter((crop, index, self) => self.indexOf(crop) === index); // Remove duplicates
+    
+    // Map to the display format
+    const cropMap: { [key: string]: string } = {
+      "soyabean": "🫘 Soybean / सोयाबीन",
+      "methi": "🌿 Methi / मेथी", 
+      "wheat": "🌾 Wheat / गेहूं",
+      "chana": "🫘 Chana / चना",
+      "maize": "🌽 Maize / मक्का",
+      "moong": "🟢 Moong / मूंग",
+      "paddy": "🌾 Paddy / धान",
+      "sesame": "🫒 Sesame / तिल",
+      "toor": "🫘 Toor / तूर",
+      "urad": "⚫ Urad / उड़द"
+    };
+    
+    return availableCrops.map(crop => ({
+      key: crop,
+      name: cropMap[crop] || crop
+    }));
+  };
+
+  const crops = getCropsForSeason(season);
 
   const seasons: Option[] = [
     { key: "kharif", name: "☀️ Kharif / खरीफ" },
@@ -199,6 +218,21 @@ export default function Home() {
     if (season !== "" && crop !== "") setStep(2);
     if (season !== "" && crop !== "" && variety !== "") setStep(3);
   }, [season, crop, variety]);
+
+  // Reset crop and variety when season changes
+  useEffect(() => {
+    if (season !== "") {
+      setCrop("");
+      selectVariety("");
+    }
+  }, [season]);
+
+  // Reset variety when crop changes
+  useEffect(() => {
+    if (crop !== "") {
+      selectVariety("");
+    }
+  }, [crop]);
 
 
   const handleContinue = () => {
