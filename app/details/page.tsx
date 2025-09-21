@@ -3,7 +3,7 @@ import { useSearchParams } from "next/navigation";
 import { details } from "../components/data";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
+import {IoArrowBack} from "react-icons/io5"
 // Import all crop detail components
 import { SoyaEnglish, SoyaHindi, SoyaKannada, SoyaMarathi, SoyaTamil } from "../components/Soyadetails";
 import { WheatEnglish, WheatHindi, WheatKannada, WheatMarathi, WheatTamil } from "../components/Wheatdetails";
@@ -118,14 +118,25 @@ const Details = () => {
     <div className="flex flex-col gap-4 text-black px-5 py-4">
        {/* <h1>{variety?.image}</h1> */}
        <div className="flex justify-between my-2 "> 
-         <button onClick={()=>{router.push("/")}}>Back</button> 
-         <h1>{varietyname}</h1> 
-         <div className="flex items-center gap-2">
+        <div className="flex gap-1 items-center"> <button
+           onClick={() => { router.push("/"); }}
+           aria-label="Back"
+           className="flex items-center justify-center rounded hover:bg-gray-200 transition-colors"
+         >
+           <span>
+             {/* Using react-icons for back arrow */}
+             {/* Make sure to have: import { IoArrowBack } from "react-icons/io5"; at the top of your file */}
+             <IoArrowBack  size={20} />
+           </span>
+         </button>
+         <h1 className="whitespace-nowrap text-sm">{varietyname}</h1> </div>
+        
+         <div className="flex items-center gap-2 text-xs">
            <h1>Language / भाषा </h1> 
            <select 
              value={selectedLanguage} 
              onChange={(e) => setSelectedLanguage(e.target.value)}
-             className="px-2 py-1 border border-gray-300 rounded"
+             className="px-1 py-1 border border-gray-300 rounded"
            >
              <option value="English">English</option>
              <option value="Hindi">Hindi</option>
