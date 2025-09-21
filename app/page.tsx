@@ -29,7 +29,7 @@ interface SelectorProps {
 const Selector = ({ setState, selectedvalue, value, optionKey }: SelectorProps) => {
   return (
     <div
-      className={`px-3 py-2 border-[1px] border-[#CAC4D0] rounded-[4px] hover:cursor-pointer ${
+      className={`px-3 py-2 border-[1px] border-[#CAC4D0] rounded-[4px] hover:cursor-pointer whitespace-nowrap ${
         selectedvalue === optionKey ? "bg-[#FFF6D3] border-[2px]" : ""
       }`}
       onClick={() => setState(optionKey)}
@@ -105,16 +105,31 @@ const Selectcrop = ({ setState, crop, values }: SelectCropProps) => {
   return (
     <div className="flex flex-col gap-2">
       <h1 className="font-bold">Select Crop / फसल चुनें*</h1>
-      <div className="flex gap-2">
-        {values.map((value) => (
-          <Selector
-            key={value.key}
-            selectedvalue={crop}
-            setState={setState}
-            value={value.name}
-            optionKey={value.key}
-          />
-        ))}
+      <div
+        className="flex gap-3 overflow-x-auto scrollbar-none"
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
+      >
+        <style>
+          {`
+            .hide-scrollbar::-webkit-scrollbar {
+              display: none;
+            }
+          `}
+        </style>
+        <div className="hide-scrollbar flex gap-3 w-full">
+          {values.map((value) => (
+            <Selector
+              key={value.key}
+              selectedvalue={crop}
+              setState={setState}
+              value={value.name}
+              optionKey={value.key}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -193,6 +208,7 @@ export default function Home() {
   const crops: Option[] = [
     { key: "soyabean", name: "🫘 Soybean / सोयाबीन" },
     { key: "methi", name: "🌿 Methi / मेथी" },
+    {key:"wheat",name:" 🌾 Wheat / गेहूं"}
   ];
 
   const seasons: Option[] = [
