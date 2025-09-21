@@ -177,16 +177,16 @@ export default function Home() {
   const router = useRouter(); // ✅ create router
 
   const crops: Option[] = [
-    { key: "Soyabean", name: "🫘 Soybean / सोयाबीन" },
-    { key: "Methi", name: "🌿 Methi / मेथी" },
-    { key: "Wheat", name: "🌾 Wheat / गेहूं" },
-    { key: "Chana", name: "🫘 Chana / चना" },
+    { key: "soyabean", name: "🫘 Soybean / सोयाबीन" },
+    { key: "methi", name: "🌿 Methi / मेथी" },
+    { key: "wheat", name: "🌾 Wheat / गेहूं" },
+    { key: "chana", name: "🫘 Chana / चना" },
     { key: "maize", name: "🌽 Maize / मक्का" },
-    { key: "Moong", name: "🟢 Moong / मूंग" },
-    { key: "Paddy", name: "🌾 Paddy / धान" },
-    { key: "Sesame", name: "🫒 Sesame / तिल" },
-    { key: "Toor", name: "🫘 Toor / तूर" },
-    { key: "Urad", name: "⚫ Urad / उड़द" }
+    { key: "moong", name: "🟢 Moong / मूंग" },
+    { key: "paddy", name: "🌾 Paddy / धान" },
+    { key: "sesame", name: "🫒 Sesame / तिल" },
+    { key: "toor", name: "🫘 Toor / तूर" },
+    { key: "urad", name: "⚫ Urad / उड़द" }
   ];
 
   const seasons: Option[] = [
