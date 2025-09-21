@@ -1,6 +1,6 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { details } from "../components/data";
+import { details, crops } from "../components/data";
 import { useRouter } from "next/navigation";
 import { useState, Suspense } from "react";
 import {IoArrowBack} from "react-icons/io5"
@@ -114,43 +114,49 @@ const DetailsContent = () => {
 
   
   return (
-    <div className="flex flex-col gap-4 text-black px-5 py-4">
-       {/* <h1>{variety?.image}</h1> */}
-       <div className="flex justify-between my-2 "> 
-        <div className="flex gap-1 items-center"> <button
-           onClick={() => { router.push("/"); }}
-           aria-label="Back"
-           className="flex items-center justify-center rounded hover:bg-gray-200 transition-colors"
-         >
-           <span>
-             {/* Using react-icons for back arrow */}
-             {/* Make sure to have: import { IoArrowBack } from "react-icons/io5"; at the top of your file */}
-             <IoArrowBack  size={20} />
-           </span>
-         </button>
-         <h1 className="whitespace-nowrap text-sm">{varietyname}</h1> </div>
-        
-         <div className="flex items-center gap-2 text-xs">
-           <h1>Language / भाषा </h1> 
-           <select 
-             value={selectedLanguage} 
-             onChange={(e) => setSelectedLanguage(e.target.value)}
-             className="px-1 py-1 border border-gray-300 rounded"
-           >
-             <option value="English">English</option>
-             <option value="Hindi">Hindi</option>
-             <option value="Kannada">Kannada</option>
-             <option value="Marathi">Marathi</option>
-             <option value="Tamil">Tamil</option>
-           </select>
+    <div className="flex flex-col text-black">
+       {/* Sticky Header */}
+       <div className="sticky top-0 z-50 bg-white border-b border-gray-200 px-5 py-1">
+         <div className="flex justify-between my-2"> 
+           <div className="flex gap-1 items-center"> 
+             <button
+               onClick={() => { router.push("/"); }}
+               aria-label="Back"
+               className="flex items-center justify-center rounded hover:bg-gray-200 transition-colors"
+             >
+               <span>
+                 <IoArrowBack size={20} />
+               </span>
+             </button>
+             <h1 className="whitespace-nowrap text-sm">{varietyname}</h1> 
+           </div>
+           
+           <div className="flex items-center gap-2 text-xs">
+             <h1>Language / भाषा </h1> 
+             <select 
+               value={selectedLanguage} 
+               onChange={(e) => setSelectedLanguage(e.target.value)}
+               className="px-1 py-1 border border-gray-300 rounded"
+             >
+               <option value="English">English</option>
+               <option value="Hindi">Hindi</option>
+               <option value="Kannada">Kannada</option>
+               <option value="Marathi">Marathi</option>
+               <option value="Tamil">Tamil</option>
+             </select>
+           </div>
          </div>
        </div>
+       
+       {/* Scrollable Content */}
+       <div className="flex flex-col gap-4 px-5 py-4">
       
-      <div className="flex flex-col gap-2  bg-[#FFF6D3] p-4 items-start">
-        <div className="flex justify-center items-center min-w-full">
-          <img src={variety?.image} className="w-[294px] h-[294px]" alt={varietyname || "Crop variety image"}/>
+        <div className="flex flex-col gap-2  bg-[#DAF8E5] p-4 items-start">
+          <div className="flex justify-center items-center min-w-full">
+            <img src={variety?.image} className="w-[294px] h-[294px]" alt={varietyname || "Crop variety image"}/>
+          </div>
+          <LanguageComponent />
         </div>
-        <LanguageComponent />
       </div>
     </div>
   );

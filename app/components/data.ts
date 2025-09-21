@@ -33,7 +33,7 @@ export const details = [
         crop:"chana",
         season:"kharif",
         image:"/agroseeds/kesari51.png",
-        name:"Jaki-9218",
+        name:"Kesari 51",
         details:"",
     },
     {
@@ -234,7 +234,7 @@ export const details = [
 
 
 
-const crops = [
+export const crops = [
     { key: "soyabean", name: "🫘 Soybean / सोयाबीन" },
     { key: "methi", name: "🌿 Methi / मेथी" },
     { key: "wheat", name: "🌾 Wheat / गेहूं" },

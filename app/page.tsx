@@ -29,7 +29,7 @@ const Selector = ({ setState, selectedvalue, value, optionKey }: SelectorProps) 
   return (
     <div
       className={`px-3 py-2 border-[1px] border-[#CAC4D0] rounded-[4px] hover:cursor-pointer whitespace-nowrap ${
-        selectedvalue === optionKey ? "bg-[#FFF6D3] border-[2px]" : ""
+        selectedvalue === optionKey ? "bg-[#DAF8E5] border-[2px]" : ""
       }`}
       onClick={() => setState(optionKey)}
     >
@@ -119,7 +119,7 @@ const Varietycard = ({ image, name, setState, optionKey, variety }: VarietyCardP
   return (
     <div
       className={`min-w-full p-[10px] flex flex-col gap-[10px] text-black rounded-[4px] border-[#2C593C] border-[2px] ${
-        optionKey === variety ? "bg-[#FFF6D3]" : ""
+        optionKey === variety ? "bg-[#DAF8E5]" : ""
       }`}
       onClick={() => setState(optionKey)}
     >
