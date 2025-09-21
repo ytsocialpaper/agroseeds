@@ -241,16 +241,16 @@ export default function Home() {
 
       </div>
       </div>
-     
-      <button
+     <div className="min-w-full flex justify-center"><button
           className={`${
             step === 3 ? "bg-[#2C593C] text-white " : "bg-[#B3B3B3] text-[#757575]"
-          } text-[28px] w-fit px-4 py-1 rounded-[4px]`}
+          } text-[20px] w-fit px-4 py-1 rounded-[4px] `}
           disabled={step !== 3} // disable until step 3
           onClick={handleContinue}
         >
           Continue / आगे बढ़ें
-        </button>
+        </button></div>
+      
     </div>
   );
 }
