@@ -38,7 +38,6 @@ const Selector = ({ setState, selectedvalue, value, optionKey }: SelectorProps) 
   );
 };
 
-
 // ---------------------- SELECT SEASON ----------------------
 interface SelectSeasonProps {
   setState: (value: string) => void;
@@ -164,10 +163,6 @@ const Selectvariety = ({ setState, variety, varieties, crop, season }: SelectVar
   );
 };
 
-
-
-
-
 // ---------------------- MAIN COMPONENT ----------------------
 export default function Home() {
   const [season, setSeason] = useState("");
@@ -179,30 +174,28 @@ export default function Home() {
   // Function to get crops available for the selected season
   const getCropsForSeason = (selectedSeason: string): Option[] => {
     if (!selectedSeason) return [];
-    
-    // Get unique crops from details that match the selected season
+
     const availableCrops = details
-      .filter(item => item.season.toLowerCase() === selectedSeason.toLowerCase())
-      .map(item => item.crop)
-      .filter((crop, index, self) => self.indexOf(crop) === index); // Remove duplicates
-    
-    // Map to the display format
+      .filter((item) => item.season.toLowerCase() === selectedSeason.toLowerCase())
+      .map((item) => item.crop)
+      .filter((crop, index, self) => self.indexOf(crop) === index);
+
     const cropMap: { [key: string]: string } = {
-      "soyabean": "🫘 Soybean / सोयाबीन",
-      "methi": "🌿 Methi / मेथी", 
-      "wheat": "🌾 Wheat / गेहूं",
-      "chana": "🫘 Chana / चना",
-      "maize": "🌽 Maize / मक्का",
-      "moong": "🟢 Moong / मूंग",
-      "paddy": "🌾 Paddy / धान",
-      "sesame": "🫒 Sesame / तिल",
-      "toor": "🫘 Toor / तूर",
-      "urad": "⚫ Urad / उड़द"
+      soyabean: "🫘 Soybean / सोयाबीन",
+      methi: "🌿 Methi / मेथी",
+      wheat: "🌾 Wheat / गेहूं",
+      chana: "🫘 Chana / चना",
+      maize: "🌽 Maize / मक्का",
+      moong: "🟢 Moong / मूंग",
+      paddy: "🌾 Paddy / धान",
+      sesame: "🫒 Sesame / तिल",
+      toor: "🫘 Toor / तूर",
+      urad: "⚫ Urad / उड़द",
     };
-    
-    return availableCrops.map(crop => ({
+
+    return availableCrops.map((crop) => ({
       key: crop,
-      name: cropMap[crop] || crop
+      name: cropMap[crop] || crop,
     }));
   };
 
@@ -219,7 +212,6 @@ export default function Home() {
     if (season !== "" && crop !== "" && variety !== "") setStep(3);
   }, [season, crop, variety]);
 
-  // Reset crop and variety when season changes
   useEffect(() => {
     if (season !== "") {
       setCrop("");
@@ -227,43 +219,52 @@ export default function Home() {
     }
   }, [season]);
 
-  // Reset variety when crop changes
   useEffect(() => {
     if (crop !== "") {
       selectVariety("");
     }
   }, [crop]);
 
-
   const handleContinue = () => {
     if (step === 3) {
-      // ✅ Route with crop and variety as query params
       router.push(`/details?crop=${encodeURIComponent(crop)}&variety=${encodeURIComponent(variety)}`);
     }
   };
 
-
   return (
     <div className="flex flex-col justify-between text-black py-4 px-5 gap-4 relative min-h-screen pb-20">
-      <div className="flex flex-col  flex-grow"> <StepNavbar currentStep={step} />
-      <div className="flex flex-col gap-8">
-        <Selectseason setState={setSeason} season={season} values={seasons} />
-        <Selectcrop setState={setCrop} crop={crop} values={crops} />
-        <Selectvariety setState={selectVariety} variety={variety} varieties={details} crop={crop} season={season} />
+      <div className="flex flex-col flex-grow">
+        <StepNavbar currentStep={step} />
+        <div className="flex flex-col gap-8">
+          {/* Step 0: Select Season */}
+          <Selectseason setState={setSeason} season={season} values={seasons} />
+
+          {/* Step 1: Show Crop only after season is selected */}
+          {step >= 1 && <Selectcrop setState={setCrop} crop={crop} values={crops} />}
+
+          {/* Step 2: Show Variety only after crop is selected */}
+          {step >= 2 && (
+            <Selectvariety
+              setState={selectVariety}
+              variety={variety}
+              varieties={details}
+              crop={crop}
+              season={season}
+            />
+          )}
+        </div>
       </div>
+      <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+16px)] left-1/2 -translate-x-1/2 z-50 min-w-full flex justify-center">
+        <button
+          className={`${
+            step === 3 ? "bg-[#2C593C] text-white " : "bg-[#B3B3B3] text-[#757575]"
+          } text-[20px] w-fit px-4 py-1 rounded-[4px] `}
+          disabled={step !== 3}
+          onClick={handleContinue}
+        >
+          Continue / आगे बढ़ें
+        </button>
       </div>
-     <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+16px)] left-1/2 -translate-x-1/2 z-50 min-w-full flex justify-center">
-       <button
-         className={`${
-           step === 3 ? "bg-[#2C593C] text-white " : "bg-[#B3B3B3] text-[#757575]"
-         } text-[20px] w-fit px-4 py-1 rounded-[4px] `}
-         disabled={step !== 3}
-         onClick={handleContinue}
-       >
-         Continue / आगे बढ़ें
-       </button>
-     </div>
-      
     </div>
   );
 }
