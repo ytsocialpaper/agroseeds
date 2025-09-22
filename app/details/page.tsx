@@ -116,7 +116,7 @@ const DetailsContent = () => {
   return (
     <div className="flex flex-col text-black">
        {/* Sticky Header */}
-       <div className="sticky top-0 z-50 bg-white border-b border-gray-200 px-5 py-1">
+       <div className="sticky top-[75px] z-50 bg-white border-b border-gray-200 px-5 py-1">
          <div className="flex justify-between my-2"> 
            <div className="flex gap-1 items-center"> 
              <button
@@ -149,7 +149,7 @@ const DetailsContent = () => {
        </div>
        
        {/* Scrollable Content */}
-       <div className="flex flex-col gap-4 px-5 py-4">
+       <div className="flex flex-col gap-4 px-5 py-4 mt-4">
       
         <div className="flex flex-col gap-2  bg-[#DAF8E5] p-4 items-start">
           <div className="flex justify-center items-center min-w-full">
