@@ -244,24 +244,25 @@ export default function Home() {
 
 
   return (
-    <div className="flex flex-col justify-between text-black py-4 px-5   gap-4 relative min-h-screen">
+    <div className="flex flex-col justify-between text-black py-4 px-5 gap-4 relative min-h-screen pb-20">
       <div className="flex flex-col  flex-grow"> <StepNavbar currentStep={step} />
       <div className="flex flex-col gap-8">
         <Selectseason setState={setSeason} season={season} values={seasons} />
         <Selectcrop setState={setCrop} crop={crop} values={crops} />
         <Selectvariety setState={selectVariety} variety={variety} varieties={details} crop={crop} season={season} />
-
       </div>
       </div>
-     <div className="min-w-full flex justify-center"><button
-          className={`${
-            step === 3 ? "bg-[#2C593C] text-white " : "bg-[#B3B3B3] text-[#757575]"
-          } text-[20px] w-fit px-4 py-1 rounded-[4px] `}
-          disabled={step !== 3} // disable until step 3
-          onClick={handleContinue}
-        >
-          Continue / आगे बढ़ें
-        </button></div>
+     <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+16px)] left-1/2 -translate-x-1/2 z-50 min-w-full flex justify-center">
+       <button
+         className={`${
+           step === 3 ? "bg-[#2C593C] text-white " : "bg-[#B3B3B3] text-[#757575]"
+         } text-[20px] w-fit px-4 py-1 rounded-[4px] `}
+         disabled={step !== 3}
+         onClick={handleContinue}
+       >
+         Continue / आगे बढ़ें
+       </button>
+     </div>
       
     </div>
   );

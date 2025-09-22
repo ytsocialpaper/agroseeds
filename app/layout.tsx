@@ -28,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col bg-white`}
       >
-        <div className="flex flex-col bg-white min-h-[100vh]  " style={{
+        <div className="flex flex-col bg-white min-h-[100vh] pt-[calc(env(safe-area-inset-top)+60px)] " style={{
     backgroundImage: `url("/background.png")`,
     backgroundSize: "cover",      // optional
     backgroundRepeat: "no-repeat", // optional

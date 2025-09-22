@@ -128,7 +128,7 @@ const DetailsContent = () => {
                  <IoArrowBack size={20} />
                </span>
              </button>
-             <h1 className="whitespace-nowrap text-sm">{variety?.crop}/{varietyname}</h1> 
+             <h1 className="whitespace-nowrap text-sm">{variety?.crop} / {varietyname}</h1> 
            </div>
            
            <div className="flex items-center gap-2 text-xs">
