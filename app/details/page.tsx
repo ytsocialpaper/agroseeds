@@ -132,7 +132,7 @@ const DetailsContent = () => {
            </div>
            
            <div className="flex items-center gap-2 text-xs">
-             <h1>Language / भाषा </h1> 
+             <h1>Language</h1> 
              <select 
                value={selectedLanguage} 
                onChange={(e) => setSelectedLanguage(e.target.value)}
