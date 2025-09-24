@@ -52,7 +52,7 @@ export const details = [
         details:"",
     },
     {
-        crop:"soyabean",
+        crop:"maize",
         season:"kharif",
         image:"/agroseeds/kesari909.png",
         name:"kesari 909",
