@@ -15,6 +15,7 @@ import { PaddyEnglish, PaddyHindi, PaddyKannada, PaddyMarathi, PaddyTamil } from
 import { SesameEnglish, SesameHindi, SesameKannada, SesameMarathi, SesameTamil } from "../components/Sesamedetails";
 import { ToorEnglish, ToorHindi, ToorKannada, ToorMarathi, ToorTamil } from "../components/Toordetails";
 import { UradEnglish, UradHindi, UradKannada, UradMarathi, UradTamil } from "../components/Uraddetails";
+import { GroundnutEnglish, GroundnutHindi,GroundnutKannada,GroundnutMarathi,GroundnutTamil} from "../components/Groundnutdetails";
 
 const DetailsContent = () => {
   const searchParams = useSearchParams();
@@ -95,6 +96,13 @@ const DetailsContent = () => {
       Marathi: UradMarathi,
       Tamil: UradTamil,
     },
+    groundnut:{
+      English: GroundnutEnglish,
+      Hindi: GroundnutHindi,
+      Kannada: GroundnutKannada,
+      Marathi: GroundnutMarathi,
+      Tamil: GroundnutTamil
+    }
   };
 
   // Get the appropriate component based on crop and language
