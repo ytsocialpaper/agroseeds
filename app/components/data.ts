@@ -27,7 +27,7 @@ export const details = [
         crop:"wheat",
         season:"kharif",
         image:"/agroseeds/kesari55.png",
-        name:"kesari1111",
+        name:"kesari 55",
         details:"",
     },
     {
@@ -45,7 +45,7 @@ export const details = [
         details:"",
     },
     {
-        crop:"wheat",
+        crop:"soyabean",
         season:"kharif",
         image:"/agroseeds/kesari21.png",
         name:"kesari21",
@@ -59,7 +59,7 @@ export const details = [
         details:"",
     },
     {
-        crop:"wheat",
+        crop:"methi",
         season:"kharif",
         image:"/agroseeds/kesarimethi.png",
         name:"kesari Methi",
@@ -88,7 +88,7 @@ export const details = [
 
 
 export const crops = [
-    { key: "soyabean", name: "🫘 Soybean / सोयाबीन" },
+    { key: "soyabean", name: "🫘 Soyabean / सोयाबीन" },
     { key: "methi", name: "🌿 Methi / मेथी" },
     { key: "wheat", name: "🌾 Wheat / गेहूं" },
     { key: "chana", name: " 🌰 Chana / चना" },

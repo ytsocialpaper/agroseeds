@@ -181,7 +181,7 @@ export default function Home() {
       .filter((crop, index, self) => self.indexOf(crop) === index);
 
     const cropMap: { [key: string]: string } = {
-      soyabean: "🫘 Soybean / सोयाबीन",
+      soyabean: "🫘 Soyabean / सोयाबीन",
       methi: "🌿 Methi / मेथी",
       wheat: "🌾 Wheat / गेहूं",
       chana: "🫘 Chana / चना",
@@ -191,6 +191,7 @@ export default function Home() {
       sesame: "🫒 Sesame / तिल",
       toor: "🫘 Toor / तूर",
       urad: "⚫ Urad / उड़द",
+      groundnut:"🌰 Groundnut / मूंगफली"
     };
 
     return availableCrops.map((crop) => ({
